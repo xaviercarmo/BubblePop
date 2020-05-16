@@ -18,17 +18,21 @@ class ScoreViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        if let name = userDefaults.string(forKey: "name") {
+            let score = userDefaults.integer(forKey: "score")
+            self.playerNameLabel.text = name
+            self.highScoreLabel.text = String(score)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         // get bane abd score from user defaults
-        let userDefaults = UserDefaults.standard
-        if let name = userDefaults.value(forKey: "name") as String,
-            let score = userDefaults.value(forKey: "score") as Int {
-            
-        }
+        
         
         // set label to the info
-        self.playerNameLabel.text = name
-        self.scoreLabel.text = score
+        
     }
     
     /*
