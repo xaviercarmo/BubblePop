@@ -15,46 +15,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr">
-                                <rect key="frame" x="32" y="354" width="138" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" backgroundImage="play_button.png"/>
-                                <connections>
-                                    <segue destination="5g7-As-Bvc" kind="show" id="NlR-Fb-snL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ">
-                                <rect key="frame" x="244" y="354" width="138" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ">
+                                <rect key="frame" x="244" y="448" width="138" height="138"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="leaderboard_button.png"/>
                                 <connections>
                                     <segue destination="O8p-Ie-DK2" kind="show" id="Bdm-Qp-fGc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_pop_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="93f-uv-oNR">
-                                <rect key="frame" x="32" y="88" width="350" height="99"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bubble_pop_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="93f-uv-oNR">
+                                <rect key="frame" x="1" y="191" width="413" height="90"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="30" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-9j-gYV">
-                                <rect key="frame" x="57" y="210" width="300.5" height="44"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="30" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-9j-gYV">
+                                <rect key="frame" x="57" y="304" width="300.5" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3">
-                                <rect key="frame" x="138" y="511" width="138" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3">
+                                <rect key="frame" x="138" y="605" width="138" height="138"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="settings_button.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr">
+                                <rect key="frame" x="32" y="448" width="138" height="138"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" backgroundImage="play_button.png"/>
+                                <connections>
+                                    <segue destination="5g7-As-Bvc" kind="show" id="NlR-Fb-snL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dkV-9j-gYV" firstAttribute="top" secondItem="93f-uv-oNR" secondAttribute="bottom" constant="23" id="5Lw-CF-AFh"/>
-                            <constraint firstItem="dkV-9j-gYV" firstAttribute="centerX" secondItem="93f-uv-oNR" secondAttribute="centerX" id="H5A-e2-fsJ"/>
-                            <constraint firstItem="93f-uv-oNR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="Pgg-ey-veJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="93f-uv-oNR" secondAttribute="trailing" constant="32" id="cIe-Fr-QPm"/>
-                            <constraint firstItem="93f-uv-oNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nC5-O1-ytY"/>
+                            <constraint firstItem="93f-uv-oNR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6dV-1a-2iZ"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="leading" secondItem="dkV-9j-gYV" secondAttribute="trailing" constant="-113.5" id="7Vv-MN-R28"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="centerX" secondItem="93f-uv-oNR" secondAttribute="centerX" id="Hxs-8P-ncT"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="leading" secondItem="KDz-WV-Orr" secondAttribute="trailing" constant="-113" id="ODe-lu-QTI"/>
+                            <constraint firstItem="93f-uv-oNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="dC0-VT-TSg"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="100" id="jiY-Te-AIc"/>
+                            <constraint firstItem="l05-E4-UD3" firstAttribute="centerX" secondItem="dkV-9j-gYV" secondAttribute="centerX" id="rLz-TQ-LQW"/>
+                            <constraint firstItem="KDz-WV-Orr" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="100" id="tfA-Ka-bHz"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="top" secondItem="93f-uv-oNR" secondAttribute="bottom" constant="23" id="xEi-NG-hKS"/>
+                            <constraint firstItem="l05-E4-UD3" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="257" id="xOj-KW-KX9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
