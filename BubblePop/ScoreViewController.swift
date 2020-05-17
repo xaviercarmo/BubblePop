@@ -8,41 +8,44 @@
 
 import UIKit
 
-class ScoreViewController: UIViewController {
-    @IBOutlet weak var playerNameLabel: UILabel!
-    @IBOutlet weak var highScoreLabel: UILabel!
+class ScoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var highscoreTableView: UITableView!
+
+    var players = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let userDefaults = UserDefaults.standard
-        if let name = userDefaults.string(forKey: "name") {
-            let score = userDefaults.integer(forKey: "score")
-            self.playerNameLabel.text = name
-            self.highScoreLabel.text = String(score)
+        highscoreTableView.dataSource = self
+        highscoreTableView.delegate = self
+        
+        // Populate players if it exists
+        let defaults = UserDefaults.standard
+        if let playerListData = defaults.data(forKey: "PlayerList"),
+            let playerList = try? JSONDecoder().decode([Player].self, from: playerListData) {
+            players = playerList
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // get bane abd score from user defaults
-        
-        
-        // set label to the info
-        
+    override func viewWillAppear(_ animated: Bool) {
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
     }
-    */
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return players.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! HighscoreTableViewCell
+        cell.populateFromPlayer(players[indexPath.row])
+        
+        return cell
+    }
 }

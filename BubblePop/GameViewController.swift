@@ -20,11 +20,10 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         // Hide the back button
-        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.hidesBackButton = true
         
         // Use player to setup labels
         if let player = currPlayer {
-            print("yay")
             playerNameLabel.text = player.name
             playerHighscoreLabel.text = String(player.highScore)
         }
