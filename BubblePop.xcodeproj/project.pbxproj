@@ -19,6 +19,7 @@
 		8408002C24719889003CB4F8 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408002B24719889003CB4F8 /* CircularButton.swift */; };
 		8408002E247199EA003CB4F8 /* MathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8408002D247199EA003CB4F8 /* MathUtils.swift */; };
 		840800302471B245003CB4F8 /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 8408002F2471B245003CB4F8 /* bubble.png */; };
+		840800322471C69D003CB4F8 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840800312471C69D003CB4F8 /* Bubble.swift */; };
 		84AB9D7B24712FA20073B2A3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB9D7A24712FA20073B2A3 /* Player.swift */; };
 		84AB9D7D247165CD0073B2A3 /* HighscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB9D7C247165CD0073B2A3 /* HighscoreTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		8408002B24719889003CB4F8 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		8408002D247199EA003CB4F8 /* MathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathUtils.swift; sourceTree = "<group>"; };
 		8408002F2471B245003CB4F8 /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
+		840800312471C69D003CB4F8 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		84AB9D7A24712FA20073B2A3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		84AB9D7C247165CD0073B2A3 /* HighscoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				6B38C984246F77F6007E6E14 /* Info.plist */,
 				84AB9D7A24712FA20073B2A3 /* Player.swift */,
 				8408002D247199EA003CB4F8 /* MathUtils.swift */,
+				840800312471C69D003CB4F8 /* Bubble.swift */,
 			);
 			path = BubblePop;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				6B38C97B246F77F5007E6E14 /* HomeController.swift in Sources */,
 				6B38C977246F77F5007E6E14 /* AppDelegate.swift in Sources */,
 				6B38C979246F77F5007E6E14 /* SceneDelegate.swift in Sources */,
+				840800322471C69D003CB4F8 /* Bubble.swift in Sources */,
 				84AB9D7D247165CD0073B2A3 /* HighscoreTableViewCell.swift in Sources */,
 				6B38C991246F8297007E6E14 /* ScoreViewController.swift in Sources */,
 				8408002C24719889003CB4F8 /* CircularButton.swift in Sources */,

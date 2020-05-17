@@ -58,41 +58,31 @@ class HomeController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let target = segue.destination as? GameViewController {
-            //save the name to the list in userdefaults
-            let defaults = UserDefaults.standard
-            if let playerName = nameTextField.text {
-                let playerListData = defaults.data(forKey: "PlayerList")
-                
-                var playerList = playerListData != nil
-                    ? (try? JSONDecoder().decode([Player].self, from: playerListData!)) ?? [Player]()
-                    : [Player]()
-                
-                var currPlayer: Player?
-                for player in playerList {
-                    if (player.name == playerName) {
-                        currPlayer = player
-                        break
-                    }
-                }
-                
-                if currPlayer == nil {
-                    currPlayer = Player(name: playerName)
-                    playerList.append(currPlayer!)
-                }
-                
-                //set defaults current player and playerlist
-                if let encodedPlayerList = try? JSONEncoder().encode(playerList) {
-                    defaults.set(encodedPlayerList, forKey: "PlayerList")
-                }
-                
-                if let encodedCurrPlayer = try? JSONEncoder().encode(currPlayer) {
-                    defaults.set(encodedCurrPlayer, forKey: "CurrentPlayer")
-                }
-                
-                //pass the current player on to the game view controller
-                target.currPlayer = currPlayer
+        if let target = segue.destination as? GameViewController, let playerName = nameTextField.text {
+            let playerListData = defaults.data(forKey: "PlayerList")
+            
+            var playerList = playerListData != nil
+                ? (try? JSONDecoder().decode([Player].self, from: playerListData!)) ?? [Player]()
+                : [Player]()
+            
+            var currPlayer = playerList.first(where: { $0.name == playerName })
+            if currPlayer == nil {
+                currPlayer = Player(name: playerName)
+                playerList.append(currPlayer!)
             }
+            
+            //set defaults current player and playerlist
+            if let encodedPlayerList = try? JSONEncoder().encode(playerList) {
+                defaults.set(encodedPlayerList, forKey: "PlayerList")
+            }
+            
+            if let encodedCurrPlayer = try? JSONEncoder().encode(currPlayer) {
+                defaults.set(encodedCurrPlayer, forKey: "CurrentPlayer")
+            }
+            
+            //pass the current player on to the game view controller
+            target.currPlayer = currPlayer
+            target.gameDuration = Int(durationSlider.value)
         }
     }
 
