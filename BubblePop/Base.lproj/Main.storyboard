@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fN1-ol-z1b">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Home Controller" customClass="HomeController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="30" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-9j-gYV">
-                                <rect key="frame" x="98.333333333333329" y="264.66666666666669" width="217.33333333333337" height="44"/>
+                                <rect key="frame" x="87.5" y="211.5" width="200" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nXR-DA-Mux"/>
                                 </constraints>
@@ -27,16 +27,16 @@
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_pop_logo" translatesAutoresizingMaskIntoConstraints="NO" id="93f-uv-oNR">
-                                <rect key="frame" x="62" y="138" width="290" height="96.666666666666686"/>
+                                <rect key="frame" x="56.5" y="94" width="262.5" height="87.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="93f-uv-oNR" secondAttribute="height" multiplier="3:1" id="0Au-U4-axm"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr" userLabel="Play_Button">
-                                <rect key="frame" x="102" y="331.66666666666669" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr" userLabel="Play_Button" customClass="CircularButton" customModule="BubblePop" customModuleProvider="target">
+                                <rect key="frame" x="102.5" y="278.5" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KDz-WV-Orr" secondAttribute="height" multiplier="1:1" id="SeT-eh-Ylm"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="lJU-bZ-bqk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="lJU-bZ-bqk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="play_button"/>
@@ -44,11 +44,11 @@
                                     <segue destination="chk-AJ-Wdc" kind="show" identifier="PlayGameSegue" id="11i-fj-hi9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ" userLabel="Leaderboard_Button">
-                                <rect key="frame" x="212" y="331.66666666666669" width="100" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ" userLabel="Leaderboard_Button" customClass="CircularButton" customModule="BubblePop" customModuleProvider="target">
+                                <rect key="frame" x="192.5" y="278.5" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="c3z-e8-UlZ" secondAttribute="height" multiplier="1:1" id="O92-O1-Dat"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ig1-Xk-6qF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="ig1-Xk-6qF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="leaderboard_button"/>
@@ -56,73 +56,160 @@
                                     <segue destination="O8p-Ie-DK2" kind="show" id="Bdm-Qp-fGc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3" userLabel="Settings_Button">
-                                <rect key="frame" x="157" y="436.66666666666669" width="100" height="100.00000000000006"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3" userLabel="Settings_Button" customClass="CircularButton" customModule="BubblePop" customModuleProvider="target">
+                                <rect key="frame" x="147.5" y="363.5" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Sjc-gn-1nm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Sjc-gn-1nm"/>
                                     <constraint firstAttribute="width" secondItem="l05-E4-UD3" secondAttribute="height" multiplier="1:1" id="Xay-z1-jVp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" backgroundImage="settings_button"/>
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rB2-Q5-kfD"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGr-Kd-q4v" userLabel="Settings View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stz-BA-xQi">
+                                        <rect key="frame" x="56.5" y="233.5" width="262.5" height="200"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="1" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="N0c-dB-hHB" userLabel="Duration_Slider">
+                                                <rect key="frame" x="24" y="98" width="214" height="31"/>
+                                                <connections>
+                                                    <action selector="gameDurationSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="WHl-jL-vwe"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZCu-BK-lXr" userLabel="Max_Bubbles_Slider">
+                                                <rect key="frame" x="24" y="32" width="214" height="31"/>
+                                                <connections>
+                                                    <action selector="maxBubblesSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uzd-8P-Ywg"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Bubbles: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDk-3n-RWf">
+                                                <rect key="frame" x="56" y="8" width="150" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Duration: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0V-vs-WaU">
+                                                <rect key="frame" x="69" y="74" width="124" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1d-ss-tSY" customClass="CircularButton" customModule="BubblePop" customModuleProvider="target">
+                                                <rect key="frame" x="101" y="126" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Jyk-re-EZU"/>
+                                                    <constraint firstAttribute="width" secondItem="c1d-ss-tSY" secondAttribute="height" multiplier="1:1" id="YRF-9a-gd1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
+                                                <state key="normal" title="Ok" backgroundImage="bubble">
+                                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="subViewOkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mBm-Hi-bnf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="UDk-3n-RWf" firstAttribute="centerX" secondItem="stz-BA-xQi" secondAttribute="centerX" id="5F5-tV-5Bq"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="210" id="9GD-fY-KIL"/>
+                                            <constraint firstItem="UDk-3n-RWf" firstAttribute="top" secondItem="stz-BA-xQi" secondAttribute="top" constant="8" id="9nn-yj-oGE"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="CZp-PY-MMw"/>
+                                            <constraint firstItem="c1d-ss-tSY" firstAttribute="centerX" secondItem="stz-BA-xQi" secondAttribute="centerX" id="JKQ-Qb-gbT"/>
+                                            <constraint firstAttribute="bottom" secondItem="c1d-ss-tSY" secondAttribute="bottom" constant="14" id="K9X-vg-Nqt"/>
+                                            <constraint firstItem="N0c-dB-hHB" firstAttribute="width" secondItem="stz-BA-xQi" secondAttribute="width" multiplier="0.8" id="Os5-aQ-Yod"/>
+                                            <constraint firstItem="N0c-dB-hHB" firstAttribute="top" secondItem="H0V-vs-WaU" secondAttribute="bottom" constant="3" id="Q8u-Yu-cwd"/>
+                                            <constraint firstItem="ZCu-BK-lXr" firstAttribute="top" secondItem="UDk-3n-RWf" secondAttribute="bottom" constant="3" id="X2t-Gs-tm5"/>
+                                            <constraint firstItem="ZCu-BK-lXr" firstAttribute="width" secondItem="stz-BA-xQi" secondAttribute="width" multiplier="0.8" id="npF-PS-Uy3"/>
+                                            <constraint firstItem="ZCu-BK-lXr" firstAttribute="centerX" secondItem="stz-BA-xQi" secondAttribute="centerX" id="owY-bP-eGP"/>
+                                            <constraint firstItem="H0V-vs-WaU" firstAttribute="top" secondItem="ZCu-BK-lXr" secondAttribute="bottom" constant="12" id="sXe-HK-PtF"/>
+                                            <constraint firstItem="H0V-vs-WaU" firstAttribute="centerX" secondItem="stz-BA-xQi" secondAttribute="centerX" id="x8a-zn-GuY"/>
+                                            <constraint firstItem="N0c-dB-hHB" firstAttribute="centerX" secondItem="stz-BA-xQi" secondAttribute="centerX" id="ym0-Of-Whk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.34607769691780821" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="stz-BA-xQi" firstAttribute="width" secondItem="kGr-Kd-q4v" secondAttribute="width" multiplier="0.7" priority="999" id="WWS-Zd-AaR"/>
+                                    <constraint firstItem="stz-BA-xQi" firstAttribute="centerX" secondItem="kGr-Kd-q4v" secondAttribute="centerX" id="bVw-jQ-UrM"/>
+                                    <constraint firstItem="stz-BA-xQi" firstAttribute="centerY" secondItem="kGr-Kd-q4v" secondAttribute="centerY" id="r8O-SK-HHl"/>
+                                    <constraint firstItem="stz-BA-xQi" firstAttribute="height" secondItem="kGr-Kd-q4v" secondAttribute="height" multiplier="0.3" priority="999" id="v9m-xj-la6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="KDz-WV-Orr" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.3" priority="999" id="4XK-Eo-ONe"/>
+                            <constraint firstItem="KDz-WV-Orr" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.2" priority="999" id="4XK-Eo-ONe"/>
                             <constraint firstItem="93f-uv-oNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BHy-Q3-xId"/>
                             <constraint firstItem="c3z-e8-UlZ" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="23" id="BR1-Mb-nMK"/>
                             <constraint firstItem="dkV-9j-gYV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H41-bd-hUO"/>
                             <constraint firstItem="c3z-e8-UlZ" firstAttribute="leading" secondItem="dkV-9j-gYV" secondAttribute="centerX" constant="5" id="Hi3-wX-d3Y"/>
                             <constraint firstItem="l05-E4-UD3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PMv-XU-Wp0"/>
                             <constraint firstItem="l05-E4-UD3" firstAttribute="top" secondItem="KDz-WV-Orr" secondAttribute="bottom" constant="5" id="Un6-K5-yhy"/>
+                            <constraint firstItem="kGr-Kd-q4v" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XJe-ID-4hP"/>
                             <constraint firstItem="KDz-WV-Orr" firstAttribute="trailing" secondItem="dkV-9j-gYV" secondAttribute="centerX" constant="-5" id="fcV-ll-Xv7"/>
                             <constraint firstItem="93f-uv-oNR" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.7" id="h3C-k3-RWq"/>
+                            <constraint firstItem="kGr-Kd-q4v" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="999" id="jKK-eQ-tK1"/>
+                            <constraint firstItem="kGr-Kd-q4v" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="nvx-pX-Qgl"/>
                             <constraint firstItem="KDz-WV-Orr" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="23" id="oFA-RB-9rm"/>
                             <constraint firstItem="l05-E4-UD3" firstAttribute="width" secondItem="KDz-WV-Orr" secondAttribute="width" id="pRc-CR-KyD"/>
                             <constraint firstItem="93f-uv-oNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="qpD-q8-PCv"/>
+                            <constraint firstItem="kGr-Kd-q4v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="shG-zS-Nyv"/>
                             <constraint firstItem="dkV-9j-gYV" firstAttribute="width" secondItem="93f-uv-oNR" secondAttribute="width" multiplier="0.75" priority="999" id="wd1-ZE-M6r"/>
                             <constraint firstItem="dkV-9j-gYV" firstAttribute="top" secondItem="93f-uv-oNR" secondAttribute="bottom" constant="30" id="xiM-Jg-kYz"/>
-                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.3" priority="999" id="zae-yM-p6E"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.2" priority="999" id="zae-yM-p6E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fz5-GC-Ulz"/>
                     <connections>
+                        <outlet property="SettingsViewSubView" destination="stz-BA-xQi" id="x7p-7a-P3X"/>
+                        <outlet property="durationLabel" destination="H0V-vs-WaU" id="nfQ-WJ-akd"/>
+                        <outlet property="durationSlider" destination="N0c-dB-hHB" id="mAD-FD-0HP"/>
+                        <outlet property="maxBubblesLabel" destination="UDk-3n-RWf" id="xbW-ug-q3R"/>
+                        <outlet property="maxBubblesSlider" destination="ZCu-BK-lXr" id="v8J-nj-WRH"/>
                         <outlet property="nameTextField" destination="dkV-9j-gYV" id="wNA-gC-9uO"/>
+                        <outlet property="playButton" destination="KDz-WV-Orr" id="PHK-ef-Npy"/>
+                        <outlet property="settingsView" destination="kGr-Kd-q4v" id="G4L-7f-3AI"/>
+                        <outlet property="settingsViewSubView" destination="stz-BA-xQi" id="N4b-cm-pqL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753.62318840579712" y="135.9375"/>
+            <point key="canvasLocation" x="752.79999999999995" y="135.38230884557723"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="cs5-45-6r8">
             <objects>
                 <viewController id="chk-AJ-Wdc" customClass="GameViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C8a-ID-AUL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-0l-xMU">
-                                <rect key="frame" x="289.66666666666669" y="143" width="124.33333333333331" height="26"/>
+                                <rect key="frame" x="262.5" y="99" width="112.5" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-0J-mds">
-                                <rect key="frame" x="124.33333333333333" y="132" width="165.33333333333337" height="48"/>
+                                <rect key="frame" x="112.5" y="88" width="150" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1w-Fa-Nqd">
-                                <rect key="frame" x="129" y="88" width="156" height="36"/>
+                                <rect key="frame" x="109.5" y="44" width="156" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sq-MV-EnW">
-                                <rect key="frame" x="0.0" y="143" width="124.33333333333333" height="26"/>
+                                <rect key="frame" x="0.0" y="99" width="112.5" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -162,7 +249,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fN1-ol-z1b" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Uj-GH-CUE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -179,28 +266,28 @@
             <objects>
                 <viewController id="O8p-Ie-DK2" customClass="ScoreViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wRp-Cf-cRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mcu-q3-x7v">
-                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="105" id="6SY-kT-Lu6" customClass="HighscoreTableViewCell" customModule="BubblePop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="105"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6SY-kT-Lu6" id="1XK-9K-cVA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjL-jg-IeZ">
-                                                    <rect key="frame" x="314" y="38" width="60" height="29"/>
+                                                    <rect key="frame" x="280" y="38" width="60" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-v5-O8v">
-                                                    <rect key="frame" x="40" y="38" width="126" height="29"/>
+                                                    <rect key="frame" x="35" y="38" width="126" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -223,7 +310,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Highscores" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPH-jw-bz0">
-                                <rect key="frame" x="87.666666666666686" y="98" width="239" height="36"/>
+                                <rect key="frame" x="68" y="54" width="239" height="36"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -251,9 +338,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bubble" width="800" height="800"/>
         <image name="bubble_pop_logo" width="143" height="33"/>
-        <image name="leaderboard_button" width="266.66665649414062" height="266.66665649414062"/>
-        <image name="play_button" width="266.66665649414062" height="266.66665649414062"/>
-        <image name="settings_button" width="266.66665649414062" height="266.66665649414062"/>
+        <image name="leaderboard_button" width="193.5" height="193.5"/>
+        <image name="play_button" width="193.5" height="193.5"/>
+        <image name="settings_button" width="193.5" height="193.5"/>
     </resources>
 </document>
