@@ -1,113 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fN1-ol-z1b">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fN1-ol-z1b">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Home Controller" customClass="HomeController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ">
-                                <rect key="frame" x="244" y="448" width="138" height="138"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="30" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-9j-gYV">
+                                <rect key="frame" x="98.333333333333329" y="264.66666666666669" width="217.33333333333337" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nXR-DA-Mux"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" backgroundImage="leaderboard_button.png"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="1XX-Md-7aM"/>
+                                </connections>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_pop_logo" translatesAutoresizingMaskIntoConstraints="NO" id="93f-uv-oNR">
+                                <rect key="frame" x="62" y="138" width="290" height="96.666666666666686"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="93f-uv-oNR" secondAttribute="height" multiplier="3:1" id="0Au-U4-axm"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr" userLabel="Play_Button">
+                                <rect key="frame" x="102" y="331.66666666666669" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KDz-WV-Orr" secondAttribute="height" multiplier="1:1" id="SeT-eh-Ylm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="lJU-bZ-bqk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" backgroundImage="play_button"/>
+                                <connections>
+                                    <segue destination="chk-AJ-Wdc" kind="show" identifier="PlayGameSegue" id="jIZ-dx-wPx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-e8-UlZ" userLabel="Leaderboard_Button">
+                                <rect key="frame" x="212" y="331.66666666666669" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="c3z-e8-UlZ" secondAttribute="height" multiplier="1:1" id="O92-O1-Dat"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ig1-Xk-6qF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" backgroundImage="leaderboard_button"/>
                                 <connections>
                                     <segue destination="O8p-Ie-DK2" kind="show" id="Bdm-Qp-fGc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bubble_pop_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="93f-uv-oNR">
-                                <rect key="frame" x="1" y="191" width="413" height="90"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="30" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dkV-9j-gYV">
-                                <rect key="frame" x="57" y="304" width="300.5" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3" userLabel="Settings_Button">
+                                <rect key="frame" x="157" y="436.66666666666669" width="100" height="100.00000000000006"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Sjc-gn-1nm"/>
+                                    <constraint firstAttribute="width" secondItem="l05-E4-UD3" secondAttribute="height" multiplier="1:1" id="Xay-z1-jVp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l05-E4-UD3">
-                                <rect key="frame" x="138" y="605" width="138" height="138"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" backgroundImage="settings_button.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-WV-Orr">
-                                <rect key="frame" x="32" y="448" width="138" height="138"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" backgroundImage="play_button.png"/>
-                                <connections>
-                                    <segue destination="5g7-As-Bvc" kind="show" id="NlR-Fb-snL"/>
-                                </connections>
+                                <state key="normal" backgroundImage="settings_button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="93f-uv-oNR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6dV-1a-2iZ"/>
-                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="leading" secondItem="dkV-9j-gYV" secondAttribute="trailing" constant="-113.5" id="7Vv-MN-R28"/>
-                            <constraint firstItem="dkV-9j-gYV" firstAttribute="centerX" secondItem="93f-uv-oNR" secondAttribute="centerX" id="Hxs-8P-ncT"/>
-                            <constraint firstItem="dkV-9j-gYV" firstAttribute="leading" secondItem="KDz-WV-Orr" secondAttribute="trailing" constant="-113" id="ODe-lu-QTI"/>
-                            <constraint firstItem="93f-uv-oNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="dC0-VT-TSg"/>
-                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="100" id="jiY-Te-AIc"/>
-                            <constraint firstItem="l05-E4-UD3" firstAttribute="centerX" secondItem="dkV-9j-gYV" secondAttribute="centerX" id="rLz-TQ-LQW"/>
-                            <constraint firstItem="KDz-WV-Orr" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="100" id="tfA-Ka-bHz"/>
-                            <constraint firstItem="dkV-9j-gYV" firstAttribute="top" secondItem="93f-uv-oNR" secondAttribute="bottom" constant="23" id="xEi-NG-hKS"/>
-                            <constraint firstItem="l05-E4-UD3" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="257" id="xOj-KW-KX9"/>
+                            <constraint firstItem="KDz-WV-Orr" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.3" priority="999" id="4XK-Eo-ONe"/>
+                            <constraint firstItem="93f-uv-oNR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BHy-Q3-xId"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="23" id="BR1-Mb-nMK"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H41-bd-hUO"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="leading" secondItem="dkV-9j-gYV" secondAttribute="centerX" constant="5" id="Hi3-wX-d3Y"/>
+                            <constraint firstItem="l05-E4-UD3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PMv-XU-Wp0"/>
+                            <constraint firstItem="l05-E4-UD3" firstAttribute="top" secondItem="KDz-WV-Orr" secondAttribute="bottom" constant="5" id="Un6-K5-yhy"/>
+                            <constraint firstItem="KDz-WV-Orr" firstAttribute="trailing" secondItem="dkV-9j-gYV" secondAttribute="centerX" constant="-5" id="fcV-ll-Xv7"/>
+                            <constraint firstItem="93f-uv-oNR" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.7" id="h3C-k3-RWq"/>
+                            <constraint firstItem="KDz-WV-Orr" firstAttribute="top" secondItem="dkV-9j-gYV" secondAttribute="bottom" constant="23" id="oFA-RB-9rm"/>
+                            <constraint firstItem="l05-E4-UD3" firstAttribute="width" secondItem="KDz-WV-Orr" secondAttribute="width" id="pRc-CR-KyD"/>
+                            <constraint firstItem="93f-uv-oNR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="qpD-q8-PCv"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="width" secondItem="93f-uv-oNR" secondAttribute="width" multiplier="0.75" priority="999" id="wd1-ZE-M6r"/>
+                            <constraint firstItem="dkV-9j-gYV" firstAttribute="top" secondItem="93f-uv-oNR" secondAttribute="bottom" constant="30" id="xiM-Jg-kYz"/>
+                            <constraint firstItem="c3z-e8-UlZ" firstAttribute="width" secondItem="dkV-9j-gYV" secondAttribute="width" multiplier="0.3" priority="999" id="zae-yM-p6E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fz5-GC-Ulz"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="dkV-9j-gYV" id="wNA-gC-9uO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753.62318840579712" y="135.9375"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="QYj-0R-0HC">
-            <objects>
-                <viewController id="5g7-As-Bvc" customClass="LoginViewController" customModule="BubblePop" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aNZ-c8-Mpk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXW-we-U7I">
-                                <rect key="frame" x="142" y="102" width="130" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yau-MJ-jkn">
-                                <rect key="frame" x="97" y="131" width="220" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kP8-aM-MpV">
-                                <rect key="frame" x="172" y="355" width="71" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Start!"/>
-                                <connections>
-                                    <segue destination="chk-AJ-Wdc" kind="show" id="jC1-x9-IhB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="9n4-W1-bNO"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="95o-wz-IGr"/>
-                    <connections>
-                        <outlet property="loginNameTextField" destination="yau-MJ-jkn" id="OT9-Th-vSh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yMD-YD-Ynv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1525" y="-38"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="cs5-45-6r8">
@@ -151,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kb3-G0-hT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2311.594202898551" y="-38.169642857142854"/>
+            <point key="canvasLocation" x="1725" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rmY-y4-rOj">
@@ -205,13 +191,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCL-nz-B1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1525" y="659"/>
+            <point key="canvasLocation" x="1725" y="659"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bubble_pop_logo.png" width="429" height="99"/>
-        <image name="leaderboard_button.png" width="800" height="800"/>
-        <image name="play_button.png" width="800" height="800"/>
-        <image name="settings_button.png" width="800" height="800"/>
+        <image name="bubble_pop_logo" width="143" height="33"/>
+        <image name="leaderboard_button" width="266.66665649414062" height="266.66665649414062"/>
+        <image name="play_button" width="266.66665649414062" height="266.66665649414062"/>
+        <image name="settings_button" width="266.66665649414062" height="266.66665649414062"/>
     </resources>
 </document>
