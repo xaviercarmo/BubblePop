@@ -9,7 +9,7 @@
 import UIKit
 
 class CircularButton: UIButton {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    final override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         var point = CGPoint()
         if let touch = touches.first {
             point = touch.location(in: self.superview)
@@ -17,7 +17,10 @@ class CircularButton: UIButton {
 
         let radius = (self.frame.width / 2.0)
         if(MathUtils.Distance(point, self.center) < Float(radius)) {
+            successfulTouch()
             super.touchesBegan(touches, with: event)
         }
     }
+    
+    func successfulTouch() {}
 }

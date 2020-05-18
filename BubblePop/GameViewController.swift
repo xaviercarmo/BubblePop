@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
     var remainingTime = 60
     var currPlayer: Player?
     
-    let bubbles = [Bubble]()
+    var bubbles = [Bubble]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,10 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            timer.invalidate()
+            self.countdownLabel.isHidden = true
+            self.startGame()
+            
             if let currNumber = Int(self.countdownLabel.text ?? "0") {
                 if currNumber == 1 {
                     timer.invalidate()
@@ -72,28 +76,68 @@ class GameViewController: UIViewController {
     }
     
     func startGame() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-            self.remainingTime -= 1
-            self.timerLabel.text = String(self.remainingTime)
-            self.updateTimerLabel()
-            
-            if self.remainingTime == 0 {
-                timer.invalidate()
-                self.endGame()
-            }
-            else {
-                self.spawnBubbles()
-            }
-        })
+        self.spawnBubbles()
+        self.navigationItem.hidesBackButton = false
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+//            self.remainingTime -= 1
+//            self.timerLabel.text = String(self.remainingTime)
+//            self.updateTimerLabel()
+//
+//            if self.remainingTime == 0 {
+//                timer.invalidate()
+//                self.endGame()
+//            }
+//            else {
+//                self.spawnBubbles()
+//            }
+//        })
+    }
+    
+    func clearBubbles() {
+        
     }
     
     func spawnBubbles() {
-        let gameCenter = gameAreaView.center
-        let buttonWidth = gameAreaView.frame.width / 5
-        let frame = CGRect(x: gameCenter.x, y: gameCenter.y, width: buttonWidth, height: buttonWidth)
-        print(gameAreaView.frame.size)
-        let newBubble = Bubble(frame: frame, type: BubbleType.red)
-        gameAreaView.addSubview(newBubble)
+//        let gameCenter = gameAreaView.center
+        
+//        let frame = CGRect(x: gameCenter.x, y: gameCenter.y, width: buttonSize, height: buttonSize)
+//        let newBubble = Bubble(frame: frame, type: BubbleType.red)
+//        gameAreaView.addSubview(newBubble)
+//        newBubble.appear()
+        
+        let buttonSize = Int(gameAreaView.frame.width / 7)
+        let halfButtonSize = Int(buttonSize / 2) + 1
+        
+//        let numBubblesToSpawn = Int.random(in: 0 ... maxBubbles)
+//        for _ in 0 ..< numBubblesToSpawn {
+        for _ in 0 ..< 10 {
+            var randX, randY: Int
+            repeat {
+                randX = Int.random(in: halfButtonSize ... (Int(gameAreaView.frame.width) - halfButtonSize))
+                randY = Int.random(in: halfButtonSize ... (Int(gameAreaView.frame.height) - halfButtonSize))
+            } while !isSpawnPointFree(point: (x: Float(randX), y: Float(randY)))
+            
+            let newBubbleFrame = CGRect(x: randX - halfButtonSize, y: randY - halfButtonSize, width: buttonSize, height: buttonSize)
+            let randBubbleType = BubbleType.allCases.randomElement()!
+            let newBubble = Bubble(frame: newBubbleFrame, type: randBubbleType)
+            gameAreaView.addSubview(newBubble)
+            newBubble.appear()
+            bubbles.append(newBubble)
+        }
+    }
+    
+    func isSpawnPointFree(point: (x: Float, y: Float)) -> Bool {
+        //checks if the point (which represents the centre of the prospective bubble)
+        //is within 2 * radius of any bubble, if it is then the new bubble would overlap
+        //so returns false to avoid this
+        for bubble in bubbles {
+            if MathUtils.Distance(point, (x: Float(bubble.center.x), y: Float(bubble.center.y))) <= Float(bubble.maxFrame.width) {
+                print("sfh;lsuhbulhgufdhg")
+                return false
+            }
+        }
+        
+        return true
     }
     
     func updateTimerLabel() {
