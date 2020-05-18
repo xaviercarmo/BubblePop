@@ -82,6 +82,7 @@ class HomeController: UIViewController {
             
             //pass the current player on to the game view controller
             target.currPlayer = currPlayer
+            target.maxBubbles = Int(maxBubblesSlider.value)
             target.gameDuration = Int(durationSlider.value)
         }
     }

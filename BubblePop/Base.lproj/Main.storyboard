@@ -191,15 +191,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iad-0l-xMU">
-                                <rect key="frame" x="262.5" y="99" width="112.5" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="262.5" y="99.5" width="112.5" height="29"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-0J-mds">
-                                <rect key="frame" x="112.5" y="88" width="150" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="112.5" y="88" width="150" height="52"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
+                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1w-Fa-Nqd">
@@ -209,31 +209,53 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sq-MV-EnW">
-                                <rect key="frame" x="0.0" y="99" width="112.5" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="0.0" y="99.5" width="112.5" height="29"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bV7-G8-7cR">
+                                <rect key="frame" x="0.0" y="148" width="375" height="519"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFj-3Y-oxZ">
+                                        <rect key="frame" x="116.5" y="124" width="142.5" height="271.5"/>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="250"/>
+                                        <color key="textColor" red="0.24974085623698702" green="0.52190330927443596" blue="0.91453021764755249" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.89741386094543341" blue="1" alpha="0.1349529109589041" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="TFj-3Y-oxZ" firstAttribute="centerY" secondItem="bV7-G8-7cR" secondAttribute="centerY" id="0me-Et-dni"/>
+                                    <constraint firstItem="TFj-3Y-oxZ" firstAttribute="centerX" secondItem="bV7-G8-7cR" secondAttribute="centerX" id="bEY-KT-RqD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="iad-0l-xMU" firstAttribute="centerY" secondItem="RWh-0J-mds" secondAttribute="centerY" id="1cK-1v-4C5"/>
+                            <constraint firstItem="bV7-G8-7cR" firstAttribute="leading" secondItem="IiT-gA-KB5" secondAttribute="leading" id="5t8-JW-9HH"/>
                             <constraint firstItem="RWh-0J-mds" firstAttribute="centerX" secondItem="C8a-ID-AUL" secondAttribute="centerX" id="7eA-uk-RZ9"/>
                             <constraint firstItem="iad-0l-xMU" firstAttribute="left" secondItem="RWh-0J-mds" secondAttribute="right" id="7rN-MA-GQQ"/>
+                            <constraint firstItem="bV7-G8-7cR" firstAttribute="trailing" secondItem="IiT-gA-KB5" secondAttribute="trailing" id="Duc-yk-Jdt"/>
                             <constraint firstItem="IiT-gA-KB5" firstAttribute="right" secondItem="iad-0l-xMU" secondAttribute="right" id="Jw3-Ef-Pk3"/>
                             <constraint firstItem="A1w-Fa-Nqd" firstAttribute="top" secondItem="IiT-gA-KB5" secondAttribute="top" id="LNN-DT-l1w"/>
                             <constraint firstItem="A1w-Fa-Nqd" firstAttribute="centerX" secondItem="C8a-ID-AUL" secondAttribute="centerX" id="MTf-yg-EDn"/>
                             <constraint firstItem="RWh-0J-mds" firstAttribute="width" secondItem="C8a-ID-AUL" secondAttribute="width" multiplier="0.4" priority="999" id="UJA-KH-qaS"/>
                             <constraint firstItem="RWh-0J-mds" firstAttribute="leading" secondItem="0Sq-MV-EnW" secondAttribute="trailing" id="Vr4-M4-cbs"/>
+                            <constraint firstItem="bV7-G8-7cR" firstAttribute="top" secondItem="RWh-0J-mds" secondAttribute="bottom" constant="8" id="XOi-tc-deL"/>
                             <constraint firstItem="0Sq-MV-EnW" firstAttribute="centerY" secondItem="RWh-0J-mds" secondAttribute="centerY" id="YEh-7j-d5R"/>
                             <constraint firstItem="0Sq-MV-EnW" firstAttribute="left" secondItem="IiT-gA-KB5" secondAttribute="left" id="e7d-WM-You"/>
+                            <constraint firstItem="bV7-G8-7cR" firstAttribute="bottom" secondItem="IiT-gA-KB5" secondAttribute="bottom" id="j4R-lq-fd7"/>
                             <constraint firstItem="RWh-0J-mds" firstAttribute="top" secondItem="A1w-Fa-Nqd" secondAttribute="bottom" constant="8" id="jD2-Ug-FgY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IiT-gA-KB5"/>
                     </view>
                     <navigationItem key="navigationItem" id="p8F-b1-SJb"/>
                     <connections>
+                        <outlet property="countdownLabel" destination="TFj-3Y-oxZ" id="JuB-nR-8co"/>
                         <outlet property="currentScoreLabel" destination="0Sq-MV-EnW" id="SUh-9c-SxP"/>
+                        <outlet property="gameAreaView" destination="bV7-G8-7cR" id="BBM-KH-cG9"/>
                         <outlet property="playerHighscoreLabel" destination="iad-0l-xMU" id="Iuy-Va-sbU"/>
                         <outlet property="playerNameLabel" destination="A1w-Fa-Nqd" id="x6Q-PS-EUk"/>
                         <outlet property="timerLabel" destination="RWh-0J-mds" id="nMx-bk-5SK"/>
@@ -241,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kb3-G0-hT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724.6376811594205" y="0.0"/>
+            <point key="canvasLocation" x="1724" y="-0.44977511244377816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rmY-y4-rOj">
@@ -309,7 +331,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Highscores" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPH-jw-bz0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Highscores" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPH-jw-bz0">
                                 <rect key="frame" x="68" y="54" width="239" height="36"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -338,7 +360,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bubble" width="800" height="800"/>
+        <image name="bubble" width="266.5" height="266.5"/>
         <image name="bubble_pop_logo" width="143" height="33"/>
         <image name="leaderboard_button" width="193.5" height="193.5"/>
         <image name="play_button" width="193.5" height="193.5"/>

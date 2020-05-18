@@ -13,10 +13,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var currentScoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var playerHighscoreLabel: UILabel!
+    @IBOutlet weak var gameAreaView: UIView!
+    @IBOutlet weak var countdownLabel: UILabel!
     
+    var maxBubbles = 15
     var gameDuration = 60
     var remainingTime = 60
     var currPlayer: Player?
+    
+    let bubbles = [Bubble]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,24 @@ class GameViewController: UIViewController {
         // Hide the back button
         self.navigationItem.hidesBackButton = true
         
-        startGame()
+        initialiseLabels()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            if let currNumber = Int(self.countdownLabel.text ?? "0") {
+                if currNumber == 1 {
+                    timer.invalidate()
+                    self.countdownLabel.isHidden = true
+                    self.startGame()
+                }
+                else {
+                    UIView.transition(with: self.countdownLabel, duration: 0.15, options: .transitionCrossDissolve, animations: {
+                      self.countdownLabel.text = String(currNumber - 1)
+                    })
+                }
+            }
+        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,7 +59,7 @@ class GameViewController: UIViewController {
 //        }
     }
     
-    func startGame() {
+    func initialiseLabels() {
         if let player = currPlayer {
             playerNameLabel.text = player.name
             playerHighscoreLabel.text = String(player.highScore)
@@ -47,33 +69,41 @@ class GameViewController: UIViewController {
         currentScoreLabel.text = "0"
         timerLabel.text = String(gameDuration)
         updateTimerLabel()
-        
-        
-        
+    }
+    
+    func startGame() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.remainingTime -= 1
             self.timerLabel.text = String(self.remainingTime)
+            self.updateTimerLabel()
             
             if self.remainingTime == 0 {
                 timer.invalidate()
                 self.endGame()
             }
             else {
-                self.updateTimerLabel()
+                self.spawnBubbles()
             }
         })
+    }
+    
+    func spawnBubbles() {
+        let gameCenter = gameAreaView.center
+        let buttonWidth = gameAreaView.frame.width / 5
+        let frame = CGRect(x: gameCenter.x, y: gameCenter.y, width: buttonWidth, height: buttonWidth)
+        print(gameAreaView.frame.size)
+        let newBubble = Bubble(frame: frame, type: BubbleType.red)
+        gameAreaView.addSubview(newBubble)
     }
     
     func updateTimerLabel() {
         let timeFraction = Float(self.remainingTime) / Float(self.gameDuration)
         var newColor: UIColor
         switch(timeFraction) {
-        case 0..<0.25:
+        case 0..<0.33:
             newColor = .red
-        case 0.25..<0.5:
+        case 0.25..<0.66:
             newColor = .orange
-        case 0.5..<0.75:
-            newColor = .blue
         default:
             newColor = .green
         }
