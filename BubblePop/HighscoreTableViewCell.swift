@@ -14,6 +14,6 @@ class HighscoreTableViewCell: UITableViewCell {
     
     func populateFromPlayer(_ player: Player) {
         playerNameLabel.text = player.name
-        scoreLabel.text = String(player.highScore)
+        scoreLabel.text = String(player.highscore)
     }
 }

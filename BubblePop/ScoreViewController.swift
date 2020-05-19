@@ -10,22 +10,16 @@ import UIKit
 
 class ScoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var highscoreTableView: UITableView!
-
-    var players = [Player]()
+    
+    var players = Array(PlayersManager.shared.players.values)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        players.sort(by: { $0.highscore > $1.highscore })
+        
         highscoreTableView.dataSource = self
         highscoreTableView.delegate = self
-        
-        // Populate players if it exists
-        let defaults = UserDefaults.standard
-        if let playerListData = defaults.data(forKey: "PlayerList"),
-            let playerList = try? JSONDecoder().decode([Player].self, from: playerListData) {
-            players = playerList
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

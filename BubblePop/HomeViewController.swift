@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+class HomeViewController: UIViewController {
     //IB Control outlets
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var playButton: UIButton!
@@ -21,27 +21,24 @@ class HomeController: UIViewController {
     
     //private constants and variables
     private let defaults = UserDefaults.standard
+    private let playersManager = PlayersManager.shared
     private var defaultMaxBubbles = 15
     private var defaultGameDuration = 60
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // set the name text field to the current player's name if it exists
-        if let currPlayerData = defaults.data(forKey: "CurrentPlayer"),
-            let currPlayer = try? JSONDecoder().decode(Player.self, from: currPlayerData) {
-            nameTextField.text = currPlayer.name
-        }
+        nameTextField.text = playersManager.currentPlayer?.name ?? ""
         
         initialiseSettingsView()
     }
     
     func initialiseSettingsView() {
-        let maxBubbles = defaults.object(forKey: "MaximumBubbles") as? Int ?? defaultMaxBubbles
+        let maxBubbles = defaults.object(forKey: "maximumBubbles") as? Int ?? defaultMaxBubbles
         maxBubblesLabel.text = "Maximum Bubbles: \(maxBubbles)"
         maxBubblesSlider.value = Float(maxBubbles)
         
-        let gameDuration = defaults.object(forKey: "GameDuration") as? Int ?? defaultGameDuration
+        let gameDuration = defaults.object(forKey: "gameDuration") as? Int ?? defaultGameDuration
         durationLabel.text = "Game Duration: \(gameDuration)"
         durationSlider.value = Float(gameDuration)
         
@@ -59,29 +56,8 @@ class HomeController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let target = segue.destination as? GameViewController, let playerName = nameTextField.text {
-            let playerListData = defaults.data(forKey: "PlayerList")
-            
-            var playerList = playerListData != nil
-                ? (try? JSONDecoder().decode([Player].self, from: playerListData!)) ?? [Player]()
-                : [Player]()
-            
-            var currPlayer = playerList.first(where: { $0.name == playerName })
-            if currPlayer == nil {
-                currPlayer = Player(name: playerName)
-                playerList.append(currPlayer!)
-            }
-            
-            //set defaults current player and playerlist
-            if let encodedPlayerList = try? JSONEncoder().encode(playerList) {
-                defaults.set(encodedPlayerList, forKey: "PlayerList")
-            }
-            
-            if let encodedCurrPlayer = try? JSONEncoder().encode(currPlayer) {
-                defaults.set(encodedCurrPlayer, forKey: "CurrentPlayer")
-            }
-            
-            //pass the current player on to the game view controller
-            target.currPlayer = currPlayer
+            playersManager.ChangePlayer(name: playerName, createIfMissing: true)
+
             target.maxBubbles = Int(maxBubblesSlider.value)
             target.gameDuration = Int(durationSlider.value)
         }
@@ -96,8 +72,8 @@ class HomeController: UIViewController {
     
     @IBAction func subViewOkButtonPressed(_ sender: Any) {
         //save the new settings
-        defaults.set(Int(maxBubblesSlider.value), forKey: "MaximumBubbles")
-        defaults.set(Int(durationSlider.value), forKey: "GameDuration")
+        defaults.set(Int(maxBubblesSlider.value), forKey: "maximumBubbles")
+        defaults.set(Int(durationSlider.value), forKey: "gameDuration")
         
         //fade the settings subview out
         UIView.animate(withDuration: 0.1) {

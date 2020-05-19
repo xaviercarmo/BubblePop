@@ -9,10 +9,30 @@
 import Foundation
 
 class Player: Codable {
-    var name = ""
-    var highScore = 0
+    private enum CodingKeys: String, CodingKey {
+        case name, highscore
+    }
     
-    init(name: String) {
+    var onChanged: ((_ player: Player) -> Void)?
+    
+    var name = "" {
+        didSet {
+            onChanged?(self)
+        }
+    }
+    
+    var highscore = 0 {
+        didSet {
+            onChanged?(self)
+        }
+    }
+    
+    init(name: String = "") {
         self.name = name
+    }
+    
+    func copyFrom(_ player: Player) {
+        name = player.name
+        highscore = player.highscore
     }
 }

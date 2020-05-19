@@ -11,33 +11,34 @@ import UIKit
 class Bubble: CircularButton {
     private(set) public var pointValue = 1
     var maxFrame = CGRect(x: 0, y: 0, width: 75, height: 75)
+    var isRemoving = false
     
     //default bubble is red with width=75
     private var _bubbleType = BubbleType.red
     private var bgImage: UIImage = UIImage(named: "bubble")!
     
-    //initiliaser for programmatic instantiation
-    init(frame: CGRect, type: BubbleType) {
-        super.init(frame: frame)
+    //optional closure to allow consumer to hook into the touch event
+    //will be called before bubble is removed from the scene
+    private var onPopped: ((_ bubble: Bubble) -> Void)?
+    
+    //initialiser for programmatic instantiation
+    init(center: CGPoint, size: Double, type: BubbleType, onPopped: @escaping (_ bubble: Bubble) -> Void) {
+        super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
         
-//        maxSize = self.frame
+        self.center = center
+        self.onPopped = onPopped
         bubbleType = type
         
         commonInit()
-//        self.alpha = 0
-//        self.frame = CGRect(origin: maxSize.origin, size: CGSize.zero)
     }
     
     //initialiser for storyboard instantiation
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-//        maxSize = self.frame
+
         updateImage()
         
         commonInit()
-//        self.alpha = 0
-//        self.frame = CGRect(origin: maxSize.origin, size: CGSize.zero)
     }
     
     //setup that is common to all initialisers
@@ -45,18 +46,19 @@ class Bubble: CircularButton {
         alpha = 0
         maxFrame = frame
         transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-//        frame = CGRect(origin: maxFrame.origin, size: CGSize.zero)
+        shouldHandleTouches = false
     }
     
     override func successfulTouch() {
+        self.isRemoving = true
         UIView.animate(
             withDuration: 0.15,
-            delay: 0,
             animations: {
                 self.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
                 self.alpha = 0
             },
             completion: { Void in()
+                self.onPopped?(self)
                 self.removeFromSuperview()
             }
         )
@@ -76,25 +78,38 @@ class Bubble: CircularButton {
             self.transform = CGAffineTransform.identity
         }
         
-//        UIView.animate(
-//            withDuration: 2.0,
-//            delay: 0,
-//            usingSpringWithDamping: CGFloat(0.20),
-//            initialSpringVelocity: CGFloat(6.0),
-//            options: UIView.AnimationOptions.allowUserInteraction,
-//            animations: { self.transform = CGAffineTransform.identity },
-//            completion: { Void in() }
-//        )
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            options: [.repeat, .curveLinear, .allowUserInteraction, .allowAnimatedContent],
+            animations: { self.frame.origin.y -= 100 },
+            completion: nil
+        )
+    }
+    
+    func disappear(onAnimComplete: ((_ bubble: Bubble) -> Void)? = nil) {
+        self.isRemoving = true
+        UIView.animate(
+            withDuration: 0.15,
+            animations: {
+                self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                self.alpha = 0
+            },
+            completion: { Void in()
+                onAnimComplete?(self)
+                self.removeFromSuperview()
+            }
+        )
     }
     
     private func updateImage() {
-        switch(bubbleType) {
+        switch bubbleType {
         case .red:
             pointValue = 1
-            setTint(UIColor.systemRed)
+            setTint(UIColor.red)
         case .pink:
             pointValue = 2
-            setTint(UIColor.systemPink)
+            setTint(UIColor(hue: 310.0/360.0, saturation: 1, brightness: 1, alpha: 1))
         case.green:
             pointValue = 5
             setTint(UIColor.systemGreen)
@@ -110,16 +125,18 @@ class Bubble: CircularButton {
     private func setTint(_ color: UIColor) {
         if let tintedImage = bgImage.tinted(color) {
             bgImage = tintedImage
-//            self.clipsToBounds = true
-//            self.contentMode = .center
-//            self.layer.cornerRadius = self.bounds.width / 2
-//            print(self.bounds.width, self.maxFrame)
-//            self.setImage(tintedImage, for: .normal)
             setBackgroundImage(bgImage, for: .normal)
         }
     }
 }
 
-enum BubbleType : CaseIterable {
-    case red, pink, green, blue, black
+//CaseIterable enums respect the order of declaration,
+//so these are declared in ascending order of probability
+//to assist random selection behaviour
+enum BubbleType: Float, CaseIterable {
+    case black = 0.05
+    case blue = 0.1
+    case green = 0.15
+    case pink = 0.3
+    case red = 0.4
 }
