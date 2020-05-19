@@ -232,7 +232,7 @@ class GameViewController: UIViewController {
         let fontSize = bubble.maxFrame.height / 3
         label.font = UIFont(name: "Marker Felt", size: fontSize) ?? label.font.withSize(fontSize)
         label.sizeToFit()
-        label.center = bubble.center
+        label.center = bubble.layer.presentation()?.
         label.layer.zPosition = 1
         gameAreaView.addSubview(label)
         

@@ -13,6 +13,12 @@ class Bubble: CircularButton {
     var maxFrame = CGRect(x: 0, y: 0, width: 75, height: 75)
     var isRemoving = false
     
+    var presentationCenter: CGPoint {
+        get {
+            
+        }
+    }
+    
     //default bubble is red with width=75
     private var _bubbleType = BubbleType.red
     private var bgImage: UIImage = UIImage(named: "bubble")!
@@ -78,13 +84,14 @@ class Bubble: CircularButton {
             self.transform = CGAffineTransform.identity
         }
         
-        UIView.animate(
-            withDuration: 1,
-            delay: 0,
-            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-            animations: { self.center.y -= 100 },
-            completion: nil
-        )
+        moveUpwards()
+//        UIView.animate(
+//            withDuration: 1,
+//            delay: 0,
+//            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
+//            animations: { self.center.y -= 100 },
+//            completion: nil
+//        )
     }
     
     func disappear(onAnimComplete: ((_ bubble: Bubble) -> Void)? = nil) {
@@ -99,6 +106,16 @@ class Bubble: CircularButton {
                 onAnimComplete?(self)
                 self.removeFromSuperview()
             }
+        )
+    }
+    
+    private func moveUpwards() {
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
+            animations: { self.center.y -= 100 },
+            completion: { _ in self.moveUpwards() }
         )
     }
     
