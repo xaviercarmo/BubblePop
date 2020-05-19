@@ -13,9 +13,14 @@ class Bubble: CircularButton {
     var maxFrame = CGRect(x: 0, y: 0, width: 75, height: 75)
     var isRemoving = false
     
-    var presentationCenter: CGPoint {
+    var presentationCenter: CGPoint? {
         get {
+            if let presFrame = layer.presentation()?.frame {
+                let halfWidth = CGFloat(presFrame.width / 2.0)
+                return CGPoint(x: presFrame.minX + halfWidth, y: presFrame.minY + halfWidth)
+            }
             
+            return nil
         }
     }
     
