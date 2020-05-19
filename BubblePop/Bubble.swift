@@ -81,8 +81,8 @@ class Bubble: CircularButton {
         UIView.animate(
             withDuration: 1,
             delay: 0,
-            options: [.repeat, .curveLinear, .allowUserInteraction, .allowAnimatedContent],
-            animations: { self.frame.origin.y -= 100 },
+            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
+            animations: { self.center.y -= 100 },
             completion: nil
         )
     }
