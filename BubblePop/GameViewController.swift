@@ -193,7 +193,8 @@ class GameViewController: UIViewController {
         //is within 2 * radius of any bubble, if it is then the new bubble would overlap
         //so returns false to avoid this
         for (bubble, _) in bubbles {
-            if MathUtils.Distance(point, bubble.center) <= Double(bubble.maxFrame.width) {
+            let center = bubble.presentationCenter ?? bubble.center
+            if MathUtils.Distance(point, center) <= Double(bubble.maxFrame.width) {
                 return false
             }
         }
