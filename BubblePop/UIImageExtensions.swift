@@ -2,7 +2,7 @@
 //  UIImageExtensions.swift
 //  BubblePop
 //
-//  Created by Jerry Boyaji on 18/5/20.
+//  Created by Xavier Carmo on 18/5/20.
 //  Copyright © 2020 Xavier Carmo. All rights reserved.
 //
 

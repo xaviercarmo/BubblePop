@@ -2,7 +2,7 @@
 //  Bubble.swift
 //  BubblePop
 //
-//  Created by Jerry Boyaji on 18/5/20.
+//  Created by Xavier Carmo on 18/5/20.
 //  Copyright © 2020 Xavier Carmo. All rights reserved.
 //
 
@@ -90,19 +90,14 @@ class Bubble: CircularButton {
         }
         
         moveUpwards()
-//        UIView.animate(
-//            withDuration: 1,
-//            delay: 0,
-//            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-//            animations: { self.center.y -= 100 },
-//            completion: nil
-//        )
     }
     
     func disappear(onAnimComplete: ((_ bubble: Bubble) -> Void)? = nil) {
         self.isRemoving = true
         UIView.animate(
             withDuration: 0.15,
+            delay: 0,
+            options: [.beginFromCurrentState],
             animations: {
                 self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 self.alpha = 0

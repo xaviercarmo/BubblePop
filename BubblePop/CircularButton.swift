@@ -2,7 +2,7 @@
 //  CircularButton.swift
 //  BubblePop
 //
-//  Created by Jerry Boyaji on 18/5/20.
+//  Created by Xavier Carmo on 18/5/20.
 //  Copyright © 2020 Xavier Carmo. All rights reserved.
 //
 
@@ -20,16 +20,20 @@ class CircularButton: UIButton {
     }
     
     func isPointInside(_ point: CGPoint) -> Bool {
-        if let presentationFrame = layer.presentation()?.frame {
-//            let point = touch.location(in: self.superview)
-            let radius = CGFloat(presentationFrame.width / 2.0)
-            let center = CGPoint(x: presentationFrame.minX + radius, y: presentationFrame.minY + radius)
-            if MathUtils.Distance(point, center) <= Double(radius) {
-                return true
-            }
-        }
+        let currFrame = layer.presentation()?.frame ?? frame
+        let radius = CGFloat(currFrame.width / 2.0)
+        let center = CGPoint(x: currFrame.minX + radius, y: currFrame.minY + radius)
+        return MathUtils.Distance(point, center) <= Double(radius)
         
-        return false
+//        if let presentationFrame = layer.presentation()?.frame {
+//            let radius = CGFloat(presentationFrame.width / 2.0)
+//            let center = CGPoint(x: presentationFrame.minX + radius, y: presentationFrame.minY + radius)
+//            if MathUtils.Distance(point, center) <= Double(radius) {
+//                return true
+//            }
+//        }
+//
+//        return false
     }
     
     func successfulTouch() {}

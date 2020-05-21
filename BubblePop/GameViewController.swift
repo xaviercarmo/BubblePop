@@ -100,33 +100,37 @@ class GameViewController: UIViewController {
     }
     
     func startGame() {
-        //remove 5 and .fire() after done testing
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { timer in
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
             if self.remainingTime == 0 {
                 timer.invalidate()
                 self.endGame()
             } else {
-                
+                self.clearBubbles(clearAll: self.remainingTime == 1)
                 if self.remainingTime != 1 {
-                    self.clearBubbles()
                     self.spawnBubbles()
-                } else {
-                    self.clearBubbles(clearAll: true)
                 }
                 
                 self.remainingTime -= 1
                 self.timerLabel.text = String(self.remainingTime)
                 self.updateTimerLabel()
             }
-            }).fire()
+        }).fire()
     }
     
     func clearBubbles(clearAll: Bool = false) {
         for (bubble, _) in bubbles {
-            if !bubble.isRemoving && (clearAll || Int.random(in: 0 ... 1) == 0) {
+            if !bubble.isRemoving && (clearAll || Int.random(in: 0 ... 1) == 1 || isBubbleOffScreen(bubble)) {
                 bubble.disappear(onAnimComplete: removeBubble)
             }
         }
+    }
+    
+    func isBubbleOffScreen(_ bubble: Bubble) -> Bool {
+        if let center = bubble.presentationCenter {
+            return center.y < 0
+        }
+        
+        return false
     }
     
     func spawnBubbles() {
@@ -134,9 +138,10 @@ class GameViewController: UIViewController {
         let halfButtonSize = buttonSize / 2 + 1
         let buttonSpawnXRange = halfButtonSize ... Double(gameAreaView.frame.width - CGFloat(halfButtonSize))
         let buttonSpawnYRange = halfButtonSize ... Double(gameAreaView.frame.height - CGFloat(halfButtonSize))
-        let maxSpawnPointTests = 20
         
-        let numBubblesToSpawn = Int.random(in: 0 ... maxBubbles)
+        let maxSpawnPointTests = 20
+        let numBubblesToSpawn = Int.random(in: 0 ... maxBubbles) //while testing
+        var newBubbles = [Bubble]()
         for _ in 0 ..< numBubblesToSpawn {
             var spawnPointTestsCounter = 0
             var randPoint: CGPoint
@@ -159,11 +164,14 @@ class GameViewController: UIViewController {
             
             let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.buttonTouchGestureHandler))
             newBubble.addGestureRecognizer(gesture)
-            
+            newBubbles.append(newBubble)
             bubbles.append((bubble: newBubble, gesture: gesture))
             gameAreaView.addSubview(newBubble)
-            newBubble.appear()
+            //newBubble.appear()
         }
+        
+        //print(newBubbles.count)
+        newBubbles.forEach({ $0.appear() })
     }
     
     //uses the percentages specified by the BubbleType enum
@@ -193,9 +201,20 @@ class GameViewController: UIViewController {
         //is within 2 * radius of any bubble, if it is then the new bubble would overlap
         //so returns false to avoid this
         for (bubble, _) in bubbles {
-            let center = bubble.presentationCenter ?? bubble.center
-            if MathUtils.Distance(point, center) <= Double(bubble.maxFrame.width) {
-                return false
+            if (!bubble.isRemoving) {
+                //print(bubble.presentationCenter == nil)
+                let center = bubble.presentationCenter ?? bubble.center
+                let diameter = Double(bubble.maxFrame.width * 1.2)
+                if bubble.presentationCenter == nil {
+                    //bubble.backgroundColor = UIColor.red
+                }
+                else if bubble.backgroundColor == UIColor.red {
+                    //bubble.backgroundColor = UIColor.blue
+                }
+                
+                if MathUtils.Distance(point, center) <= diameter {
+                    return false
+                }
             }
         }
         
@@ -203,6 +222,8 @@ class GameViewController: UIViewController {
     }
     
     func bubblePopped(_ bubble: Bubble) {
+        bubble.isEnabled = false
+        
         var scoreMultiplier = 1.0
         if lastBubbleType != nil && bubble.bubbleType == lastBubbleType! {
             scoreMultiplier = 1.5
