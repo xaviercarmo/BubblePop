@@ -34,27 +34,37 @@ class HomeViewController: UIViewController {
     }
     
     func initialiseSettingsView() {
+        // get the max bubbles from defaults and initialise label/slider to have this value
+        // note: .object used instead of .integer as the latter returns 0 when no value
+        // exists for the key, but 0 is a meaningful value for us.
         let maxBubbles = defaults.object(forKey: "maximumBubbles") as? Int ?? defaultMaxBubbles
         maxBubblesLabel.text = "Maximum Bubbles: \(maxBubbles)"
         maxBubblesSlider.value = Float(maxBubbles)
         
+        // get the game duratgion from defaults and initialise label/slider to have this value
+        // note: .object used for same reason as above
         let gameDuration = defaults.object(forKey: "gameDuration") as? Int ?? defaultGameDuration
         durationLabel.text = "Game Duration: \(gameDuration)"
         durationSlider.value = Float(gameDuration)
         
+        // initial visibility and aesthetic setup
         settingsView.alpha = 0
-        
         settingsViewSubView.layer.cornerRadius = 5
         settingsViewSubView.layer.masksToBounds = true
     }
     
+    // determines whether a segue should occur
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // prevents playing the game if the username is invalid
         return identifier == "PlayGameSegue"
             ? validateNameTextField()
             : true
     }
     
+    // performs logic before a segue, after shouldPerformSegue has returned true
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if about to play a game, performs initial setup by changing to the selected player
+        // and setting up game view
         if let target = segue.destination as? GameViewController, let playerName = nameTextField.text {
             playersManager.ChangePlayer(name: playerName, createIfMissing: true)
 
@@ -64,14 +74,14 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func settingsButtonPressed(_ sender: Any) {
-        //fade the settings subview in
+        // fade the settings subview in
         UIView.animate(withDuration: 0.25) {
             self.settingsView.alpha = 1.0
         }
     }
     
     @IBAction func subViewOkButtonPressed(_ sender: Any) {
-        //save the new settings
+        // save the new settings
         defaults.set(Int(maxBubblesSlider.value), forKey: "maximumBubbles")
         defaults.set(Int(durationSlider.value), forKey: "gameDuration")
         
@@ -89,10 +99,13 @@ class HomeViewController: UIViewController {
         durationLabel.text = "Game Duration: \(Int(sender.value))"
     }
     
+    // validates the name text field on change so that the red border goes away after correction
     @IBAction func nameTextFieldChanged(_ sender: Any) {
         validateNameTextField()
     }
     
+    // checks that the user has entered something into the name text field
+    // adds a red border if they haven't to highlight it
     @discardableResult func validateNameTextField() -> Bool {
         if let name = nameTextField.text, name != "" {
             nameTextField.layer.borderWidth = 0.0

@@ -8,12 +8,17 @@
 
 import Foundation
 
+// singleton class for managing access to the players dictionary
+// from user defaults
 class PlayersManager {
+    // private members
     private let defaults = UserDefaults.standard
     private var currentPlayerName: String?
     
+    // public members/properties
     static let shared = PlayersManager()
     private(set) var players = [String:Player]()
+    // property for retrieving the current active player
     var currentPlayer: Player? {
         get {
             if let name = currentPlayerName {
@@ -25,6 +30,7 @@ class PlayersManager {
     }
     
     private init() {
+        // load the player dictionary from user defaults
         LoadPlayers()
         
         // if the last players name exists in defaults then load that player
@@ -33,11 +39,11 @@ class PlayersManager {
         }
     }
     
-    // refreshes the players dictionary from user defaults
+    // loads the players dictionary from user defaults
     private func LoadPlayers() {
         if let playersData = defaults.data(forKey: "players") {
-            // if decoding list of players is successful, set them all up to write to
-            // user defaults on change
+            // try to decode the dictionary of players, and set them all up
+            // to trigger a save when their details change
             players = (try? JSONDecoder().decode([String:Player].self, from: playersData)) ?? players
             players.forEach({ $1.onChanged = { _ in self.Save() }})
         }
@@ -50,27 +56,25 @@ class PlayersManager {
         }
     }
     
-    // changes the current player name to the name parameter
-    // if a player with that name exists, with the option to
-    // create a player if one isnt found
+    // changes the current player name to the name parameter if
+    // a player with that name exists, with the option to create
+    // a player if one isnt found
     @discardableResult func ChangePlayer(name: String, createIfMissing: Bool = false) -> Player? {
-        currentPlayerName = (players[name] != nil || createIfMissing) ? name : nil
-
-        if (players[name] != nil || createIfMissing) {
+        // if the player exists or one should be created
+        if players[name] != nil || createIfMissing {
+            currentPlayerName = name
             defaults.set(name, forKey: "lastPlayerName")
-        }
-        
-        if (players[name] == nil && createIfMissing) {
-            defaults.set(name, forKey: "lastPlayerName")
-            return NewPlayer(name: name)
+            return players[name] ?? NewPlayer(name: name)
         } else {
-            return players[name]
+            currentPlayerName = nil
+            return nil
         }
     }
     
     // creates a new player with the passed in name, adds
     // them to the player list and saves the list. Returns
-    // the newly created player
+    // the newly created player. Returns an existing player
+    // if the name is taken
     func NewPlayer(name: String) -> Player {
         if let player = players[name] {
             return player
