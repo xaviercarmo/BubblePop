@@ -299,7 +299,7 @@ class GameViewController: UIViewController {
         
         // scales the movement speed of the label to its size, which is itself scaled
         // to the button size, meaning label speed is proportional to button size
-        let animMoveSpeed = (-label.font.lineHeight / 2)
+        let animMoveSpeed = -label.font.lineHeight / 2
         let animDuration = 1.0
         // distance = speed * time, calculates the target distance to achieve the abov
         // speed

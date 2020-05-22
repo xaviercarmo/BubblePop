@@ -126,7 +126,7 @@ class Bubble: CircularButton {
         UIView.animate(
             withDuration: 0.15,
             delay: 0,
-            options: [.beginFromCurrentState],
+            options: .beginFromCurrentState,
             animations: {
                 self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
                 self.alpha = 0
@@ -138,14 +138,19 @@ class Bubble: CircularButton {
         )
     }
     
-    // animates the bubble to move up 100 points every second. Recursive
-    // so will run forever once triggered
+    // animates the bubble to move up. Recursive so will run forever once
+    // triggered. Movement amount is proportional to height of the bubble,
+    // so scales to different screen sizes
     private func moveUpwards() {
+        let animMoveSpeed = -maxFrame.height * 1.5
+        let animDuration: CGFloat = 1.0
+        let animYOffset = animMoveSpeed * animDuration
+        
         UIView.animate(
             withDuration: 1,
             delay: 0,
             options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-            animations: { self.center.y -= 100 },
+            animations: { self.center.y += animYOffset },
             completion: { _ in self.moveUpwards() }
         )
     }
