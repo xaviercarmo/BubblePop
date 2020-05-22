@@ -8,10 +8,12 @@
 
 import UIKit
 
+// format for the cells used by the Highscore Table
 class HighscoreTableViewCell: UITableViewCell {
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    // populates the cell labels from the player's data
     func populateFromPlayer(_ player: Player) {
         playerNameLabel.text = player.name
         scoreLabel.text = String(player.highscore)

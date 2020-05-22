@@ -22,8 +22,11 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // hides the back button so that the user cannot navigate back to the game
         navigationItem.hidesBackButton = true
         
+        // updates all the labels based on the user's score, and whether they broke
+        // their highscore or not
         scoreLabel.text = " \(score)"
         
         oldHighscoreLabel.text = " \(oldHighscore)"
@@ -37,6 +40,7 @@ class GameOverViewController: UIViewController {
         }
     }
     
+    // returns to the home screen when the user is finished looking at their new score
     @IBAction func homeButtonPressed(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
     }

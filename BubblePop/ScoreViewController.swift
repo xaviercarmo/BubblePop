@@ -11,31 +11,31 @@ import UIKit
 class ScoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var highscoreTableView: UITableView!
     
+    // gets the players as a list from the dictionary in the players manager
     var players = Array(PlayersManager.shared.players.values)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // sort the players list by highscore descending
         players.sort(by: { $0.highscore > $1.highscore })
         
+        // setup the highscore table to use this class
         highscoreTableView.dataSource = self
         highscoreTableView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-    }
-    
+    // table only has one section
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    // one row for each player
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
     }
     
+    // populates the cells with data from the players list
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as! HighscoreTableViewCell
         cell.populateFromPlayer(players[indexPath.row])

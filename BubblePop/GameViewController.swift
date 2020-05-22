@@ -269,9 +269,11 @@ class GameViewController: UIViewController {
         // spawns a floating label where the bubble was popped
         spawnPointLabel(bubble: bubble, value: amountToAdd, multiplier: scoreMultiplier)
         
+        // removes the bubble
         removeBubble(bubble)
     }
     
+    // removes a bubble and de-registers is gesture recogniser
     func removeBubble(_ bubble: Bubble) {
         if let index = bubbles.firstIndex(where: { $0.bubble == bubble }) {
             gameAreaView.removeGestureRecognizer(bubbles[index].gesture)
@@ -279,7 +281,10 @@ class GameViewController: UIViewController {
         }
     }
     
+    // spawns a floating point label, if the multiplier is not 1.0 it is a
+    // combo and the label is updated accordingly
     func spawnPointLabel(bubble: Bubble, value: Int, multiplier: Double = 1.0) {
+        // sets up the aesthetics and text of the label
         let label = UILabel()
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center
@@ -292,9 +297,12 @@ class GameViewController: UIViewController {
         label.layer.zPosition = 1
         gameAreaView.addSubview(label)
         
-        //speed = distance / duration
-        let animMoveSpeed = (-label.font.lineHeight / 2) //scale the speed to the label size
+        // scales the movement speed of the label to its size, which is itself scaled
+        // to the button size, meaning label speed is proportional to button size
+        let animMoveSpeed = (-label.font.lineHeight / 2)
         let animDuration = 1.0
+        // distance = speed * time, calculates the target distance to achieve the abov
+        // speed
         let animYOffset = animMoveSpeed * CGFloat(animDuration)
         UIView.animate(
             withDuration: animDuration,
@@ -310,6 +318,8 @@ class GameViewController: UIViewController {
         )
     }
     
+    // updates the timer to be green when there is a proportionally large amount
+    // of time left, orange for medium, and red when time is running out
     func updateTimerLabel() {
         let timeFraction = Float(self.remainingTime) / Float(self.gameDuration)
         var newColor: UIColor
@@ -327,6 +337,8 @@ class GameViewController: UIViewController {
         })
     }
     
+    // end game event that handles updating the current player's highscore and
+    // transitioning to the game over screen
     func endGame() {
         if currentScore > highscore {
             currentPlayer?.highscore = currentScore
