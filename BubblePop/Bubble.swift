@@ -20,6 +20,8 @@ class Bubble: CircularButton {
     var maxFrame = CGRect(x: 0, y: 0, width: 75, height: 75)
     // boolean indicating if the bubble is currently being removed
     var isRemoving = false
+    //integer value indicating the multiplier for movement speed
+    var moveSpeed = 1.0
     
     // default bubble type is red, this is a backing member for the
     // bubbleType property
@@ -142,17 +144,19 @@ class Bubble: CircularButton {
     // triggered. Movement amount is proportional to height of the bubble,
     // so scales to different screen sizes
     private func moveUpwards() {
-        let animMoveSpeed = -maxFrame.height * 1.5
-        let animDuration: CGFloat = 1.0
-        let animYOffset = animMoveSpeed * animDuration
-        
-        UIView.animate(
-            withDuration: 1,
-            delay: 0,
-            options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
-            animations: { self.center.y += animYOffset },
-            completion: { _ in self.moveUpwards() }
-        )
+        if (!isRemoving) {
+            let animMoveSpeed = -maxFrame.height * CGFloat(moveSpeed)
+            let animDuration: CGFloat = 1.0
+            let animYOffset = animMoveSpeed * animDuration
+            
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                options: [.curveLinear, .allowUserInteraction, .beginFromCurrentState],
+                animations: { self.center.y += animYOffset },
+                completion: { _ in self.moveUpwards() }
+            )
+        }
     }
     
     // updates the tint of the bubble and its point value based on the bubble type

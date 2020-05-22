@@ -188,6 +188,9 @@ class GameViewController: UIViewController {
             // set the bubble up to trigger a touch event this view can handle manually
             let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.buttonTouchGestureHandler))
             newBubble.addGestureRecognizer(gesture)
+            //increase the bubble speed multiplier based on the total time and the progression of the timer
+            let mult = gameDuration <= 10 ? 1.4 : 1.8
+            newBubble.moveSpeed += Double(gameDuration - remainingTime) / Double(gameDuration) * mult
             
             // add the bubble to collections for tracking and add it to the view
             // so that it is visible
